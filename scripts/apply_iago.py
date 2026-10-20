@@ -16,7 +16,7 @@ DESC = ("A passionate Software Developer dedicated to building robust and scalab
         "applications. Specializing in backend development with a focus on cloud "
         "technologies. Fluent in English, Spanish, and German.")
 META_DESC = DESC + " Located in Spain. © Code by Iago"
-OG_IMAGE = "https://iagoestevez.com/assets/og.jpg"
+OG_IMAGE = "https://iagoestevez.com/assets/og.jpg?v=2"
 OG_URLS = {
     "index": "https://iagoestevez.com/",
     "about": "https://iagoestevez.com/about",
