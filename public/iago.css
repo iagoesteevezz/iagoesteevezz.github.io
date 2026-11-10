@@ -261,7 +261,8 @@
    font-size: 1.05em;
 }
 
-.fixed-nav .lang-option {
+.fixed-nav .lang-option,
+.fixed-nav .theme-option {
    padding: 0;
    border: 0;
    background: none;
@@ -274,16 +275,57 @@
 }
 
 .fixed-nav .lang-option:hover,
-.fixed-nav .lang-option:focus-visible {
+.fixed-nav .lang-option:focus-visible,
+.fixed-nav .theme-option:hover,
+.fixed-nav .theme-option:focus-visible {
    opacity: .8;
    outline: none;
 }
 
-.fixed-nav .lang-option.is-active {
+.fixed-nav .lang-option.is-active,
+.fixed-nav .theme-option.is-active {
    opacity: 1;
 }
 
 /* The badge reads "Awwwards Jury": not a credential Iago holds */
 .about-awwwards .awwwards-badge {
    display: none;
+}
+
+/* ─── Dark theme ───────────────────────────────────────
+   The page is inverted as a whole, then everything that must keep its real colours
+   (photos, videos, backgrounds set inline, and the sections that are already dark)
+   is inverted back. */
+html { color-scheme: light; }
+
+html[data-theme="dark"] {
+   color-scheme: dark;
+   background: #fff;
+   filter: invert(1) hue-rotate(180deg);
+}
+
+html[data-theme="dark"] img,
+html[data-theme="dark"] video,
+html[data-theme="dark"] iframe,
+html[data-theme="dark"] svg image,
+html[data-theme="dark"] .overlay,
+html[data-theme="dark"] .profile-picture,
+html[data-theme="dark"] .personal-image,
+html[data-theme="dark"] [style*="background-image"],
+html[data-theme="dark"] [style*="background-color"],
+html[data-theme="dark"] .theme-dark {
+   filter: invert(1) hue-rotate(180deg);
+}
+
+/* Nested media inside an already re-inverted block would flip twice: leave them */
+html[data-theme="dark"] .theme-dark img,
+html[data-theme="dark"] .theme-dark video,
+html[data-theme="dark"] .theme-dark .overlay,
+html[data-theme="dark"] .theme-dark .personal-image,
+html[data-theme="dark"] [style*="background-color"] img,
+html[data-theme="dark"] [style*="background-color"] video,
+html[data-theme="dark"] [style*="background-color"] .overlay,
+html[data-theme="dark"] [style*="background-image"] img,
+html[data-theme="dark"] [style*="background-image"] video {
+   filter: none;
 }

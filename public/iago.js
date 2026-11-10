@@ -79,6 +79,55 @@
    });
 })();
 
+/* Light / dark. Applied from <head> so there is no flash; the choice is remembered,
+   and until one is made the OS preference decides. Dark is an inverted render of the
+   light design (see iago.css), so it needs no knowledge of the remote stylesheets. */
+(function () {
+   var KEY = 'iago-theme';
+   var root = document.documentElement;
+   var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+   function stored() {
+      try { var v = localStorage.getItem(KEY); return v === 'dark' || v === 'light' ? v : null; } catch (e) { return null; }
+   }
+
+   var theme = stored() || (media && media.matches ? 'dark' : 'light');
+
+   function apply() {
+      root.setAttribute('data-theme', theme);
+      document.querySelectorAll('.theme-option').forEach(function (btn) {
+         var on = btn.getAttribute('data-theme-choice') === theme;
+         btn.classList.toggle('is-active', on);
+         btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+   }
+
+   function set(next) {
+      theme = next;
+      try { localStorage.setItem(KEY, theme); } catch (e) {}
+      apply();
+   }
+
+   apply();
+
+   if (media && media.addEventListener) {
+      media.addEventListener('change', function (e) {
+         if (!stored()) { theme = e.matches ? 'dark' : 'light'; apply(); }
+      });
+   }
+
+   document.addEventListener('click', function (event) {
+      var btn = event.target.closest('.theme-option');
+      if (btn) set(btn.getAttribute('data-theme-choice'));
+   });
+
+   document.addEventListener('DOMContentLoaded', apply);
+   // Barba swaps the page container: re-mark the buttons that come in.
+   document.addEventListener('DOMContentLoaded', function () {
+      new MutationObserver(apply).observe(document.body, { childList: true, subtree: true });
+   });
+})();
+
 /* ES / EN. The HTML is the English source; Spanish swaps exact text nodes in place,
    so names, emails and project titles are never touched. */
 (function () {
@@ -108,6 +157,9 @@
       '2026 © Edition': 'Edición 2026 ©',
       'Local time': 'Hora local',
       'Language': 'Idioma',
+      'Theme': 'Tema',
+      'Light': 'Claro',
+      'Dark': 'Oscuro',
 
       // Home
       'Located': 'Ubicado',
