@@ -476,6 +476,15 @@
       });
    }
 
+   // Barba swaps the container but leaves <head> alone: keep the browser bar colour in step with the page.
+   var THEME_COLORS = { home: '#878c92', work: '#ffffff', about: '#ffffff', contact: '#1c1d20' };
+   function syncThemeColor() {
+      var main = document.querySelector('main[data-barba-namespace]');
+      var meta = document.querySelector('meta[name="theme-color"]');
+      var color = main && THEME_COLORS[main.getAttribute('data-barba-namespace')];
+      if (meta && color && meta.getAttribute('content') !== color) meta.setAttribute('content', color);
+   }
+
    // Barba swaps containers and rewrites the title: translate whatever comes in.
    function watch() {
       new MutationObserver(function (mutations) {
@@ -487,6 +496,7 @@
          syncResume();
          enhanceHangers();
          hideDuplicateH1();
+         syncThemeColor();
       }).observe(document.body, { childList: true, subtree: true });
 
       new MutationObserver(applyTitle).observe(document.head, { childList: true, subtree: true, characterData: true });
