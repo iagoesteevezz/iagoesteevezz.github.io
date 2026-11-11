@@ -1,3 +1,15 @@
+/* Reduced motion: honour the OS setting. The template starts the carousel videos
+   with video.play() when they scroll into view; skipping that call keeps the poster. */
+(function () {
+   var query = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+   window.iagoReducedMotion = function () { return !!(query && query.matches); };
+   var play = HTMLMediaElement.prototype.play;
+   HTMLMediaElement.prototype.play = function () {
+      if (window.iagoReducedMotion()) return Promise.resolve();
+      return play.apply(this, arguments);
+   };
+})();
+
 /* Footer clock in Iago's timezone.
    Dennis' index-new.js keeps writing Amsterdam time into the #timeSpan node it
    grabbed at init (and again after every Barba page swap), so each new node is
@@ -327,6 +339,7 @@
    }
 
    function translatePage(animate) {
+      if (window.iagoReducedMotion()) animate = false;
       var edits = collect(document.body);
       var visible = animate ? outermost(edits.map(function (e) { return e.el; })).filter(isVisible) : [];
 
