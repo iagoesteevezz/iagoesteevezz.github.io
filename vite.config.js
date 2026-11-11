@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
+import { createHash } from 'node:crypto'
+import { readFileSync } from 'node:fs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -37,10 +39,26 @@ function cleanUrls() {
   }
 }
 
+// GitHub Pages lets browsers cache /iago.css and /iago.js for 10 minutes under a fixed URL,
+// so a fresh page could pair with a stale stylesheet. Tie the URL to the file's content.
+function versionedPublicAssets() {
+  const hash = (file) =>
+    createHash('md5').update(readFileSync(resolve(__dirname, 'public', file))).digest('hex').slice(0, 8)
+  return {
+    name: 'versioned-public-assets',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html) {
+        return html.replace(/(["'])\/(iago\.(?:css|js))\1/g, (_, q, file) => `${q}/${file}?v=${hash(file)}${q}`)
+      },
+    },
+  }
+}
+
 export default defineConfig({
   base: '/',
   appType: 'mpa',
-  plugins: [cleanUrls()],
+  plugins: [cleanUrls(), versionedPublicAssets()],
   build: {
     rollupOptions: {
       input: {
