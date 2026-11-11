@@ -455,6 +455,13 @@
       setLang(lang === 'es' ? 'en' : 'es', true);
    });
 
+   // The template clones the big name for its marquee: keep a single h1 for assistive tech.
+   function hideDuplicateH1() {
+      document.querySelectorAll('.name-wrap h1').forEach(function (h, i) {
+         if (i > 0 && !h.hasAttribute('aria-hidden')) h.setAttribute('aria-hidden', 'true');
+      });
+   }
+
    // Barba swaps containers and rewrites the title: translate whatever comes in.
    function watch() {
       new MutationObserver(function (mutations) {
@@ -465,6 +472,7 @@
          edits.forEach(function (e) { e.apply(); });
          syncResume();
          enhanceHangers();
+         hideDuplicateH1();
       }).observe(document.body, { childList: true, subtree: true });
 
       new MutationObserver(applyTitle).observe(document.head, { childList: true, subtree: true, characterData: true });
@@ -476,6 +484,7 @@
    document.addEventListener('DOMContentLoaded', function () {
       enhanceHangers();
       translatePage(false);
+      hideDuplicateH1();
       watch();
    });
    window.addEventListener('resize', syncSwitches);
