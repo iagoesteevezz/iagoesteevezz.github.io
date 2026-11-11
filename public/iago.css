@@ -301,3 +301,29 @@
    white-space: nowrap;
    border: 0;
 }
+
+/* Skip link: off-screen until it receives keyboard focus */
+.skip-link {
+   position: fixed;
+   top: 14px;
+   left: 14px;
+   z-index: 2147483647;
+   padding: .7em 1.2em;
+   border-radius: 2em;
+   background: #1c1d20;
+   color: #fff;
+   font-size: 14px;
+   line-height: 1.2;
+   text-decoration: none;
+   transform: translateY(-300%);
+}
+
+.skip-link:focus {
+   transform: none;
+   outline: 2px solid #fff;
+   outline-offset: 2px;
+}
+
+.main-wrap:focus {
+   outline: none;
+}

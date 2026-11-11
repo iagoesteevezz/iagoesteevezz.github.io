@@ -108,6 +108,7 @@
       '2026 © Edition': 'Edición 2026 ©',
       'Local time': 'Hora local',
       'Language': 'Idioma',
+      'Skip to content': 'Saltar al contenido',
       '(opens in a new tab)': '(se abre en una pestaña nueva)',
 
       // Home
@@ -477,6 +478,17 @@
 
       new MutationObserver(applyTitle).observe(document.head, { childList: true, subtree: true, characterData: true });
    }
+
+   // The skip link lives outside the Barba container, so resolve its target on click.
+   document.addEventListener('click', function (event) {
+      var link = event.target.closest && event.target.closest('.skip-link');
+      if (!link) return;
+      event.preventDefault();
+      var target = document.querySelector('.main-wrap') || document.querySelector('main');
+      if (!target) return;
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+   });
 
    window.iagoI18n = { t: function (en) { return t(en); }, get lang() { return lang; }, set: setLang };
    document.documentElement.lang = lang;

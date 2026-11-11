@@ -44,6 +44,7 @@
 </head>
 
 <body data-barba="wrapper">
+  <a class="skip-link" href="#main" data-barba-prevent>Skip to content</a>
   <div class="no-scroll-overlay">
   </div>
   <div class="loading-container" aria-hidden="true">
@@ -234,7 +235,7 @@
         </div>
       </div>
       <div class="fixed-nav-inner">
-        <div class="row nav-row">
+        <div class="row nav-row" role="navigation" aria-label="Menu">
           <h5 aria-level="2">
             Navigation
           </h5>
@@ -372,7 +373,7 @@
             </div>
           </div>
         </div>
-        <div class="nav-bar">
+        <div class="nav-bar" role="navigation" aria-label="Primary">
           <div class="credits-top">
             <div class="btn btn-link btn-left-top">
               <a href="/" class="btn-click magnetic" data-strength="20" data-strength-text="10">
@@ -951,8 +952,6 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js">
   </script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.9.7"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3">
   </script>
   <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.6.1/dist/lazyload.min.js">
