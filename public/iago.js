@@ -108,6 +108,7 @@
       '2026 © Edition': 'Edición 2026 ©',
       'Local time': 'Hora local',
       'Language': 'Idioma',
+      '(opens in a new tab)': '(se abre en una pestaña nueva)',
 
       // Home
       'Located': 'Ubicado',
