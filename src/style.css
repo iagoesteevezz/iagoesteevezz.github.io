@@ -65,7 +65,7 @@ img {
   justify-content: flex-end; /* marquee anchored to bottom */
   padding: 4vh 5vw;
   background-color: #999d9e;
-  background-image: url('../public/assets/iago-entero.png');
+  background-image: url('../public/assets/iago-entero.webp');
   background-size: auto;         /* natural pixel size — no zoom on resize */
   background-position: top center; /* crop the suit, never the head */
   background-repeat: no-repeat;

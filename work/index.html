@@ -3,7 +3,7 @@
 
 <head>
    <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="darkreader-lock" />
    <title>Work • Iago Estévez</title>
    <meta name="description"
@@ -20,10 +20,10 @@
    <meta property="og:locale:alternate" content="es_ES" />
    <meta property="og:type" content="website" />
    <meta property="og:url" content="https://iagoestevez.com/work" />
-   <meta property="twitter:title" content="Work • Iago Estévez" />
-   <meta property="twitter:description"
+   <meta name="twitter:title" content="Work • Iago Estévez" />
+   <meta name="twitter:description"
       content="Selected work by Iago Estévez, Software Developer based in Spain." />
-   <meta property="twitter:image" content="https://iagoestevez.com/assets/og.jpg?v=2" />
+   <meta name="twitter:image" content="https://iagoestevez.com/assets/og.jpg?v=2" />
    <meta name="twitter:card" content="summary_large_image" />
    <meta name="google" content="notranslate" />
    <link rel="canonical" href="https://iagoestevez.com/work" />
@@ -59,7 +59,7 @@
 
 <body data-barba="wrapper">
    <div class="no-scroll-overlay"></div>
-   <div class="loading-container">
+   <div class="loading-container" aria-hidden="true">
       <div class="loading-screen">
          <div class="rounded-div-wrap top">
             <div class="rounded-div"></div>
@@ -118,19 +118,25 @@
       </div>
    </div>
    <main class="main" id="work" data-barba="container" data-barba-namespace="work">
-      <div class="mouse-pos-list-image no-select">
+      <div class="mouse-pos-list-image no-select" aria-hidden="true">
          <div class="mouse-pos-list-image-bounce overlay">
             <div class="float-image-wrap">
                <li class="mouse-pos-list-image-inner design visible">
                   <div class="overlay overlay-image lazy"
                      style="background-color: #e6dfd4; background-position: center center; background-repeat: no-repeat; background-size: cover;"
-                     data-bg="/assets/work-moneytrack.jpg">
+                     data-bg="/assets/work-moneytrack.jpg?v=2">
                   </div>
                </li>
                <li class="mouse-pos-list-image-inner design visible">
                   <div class="overlay overlay-image lazy"
                      style="background-color: #c9d4cc; background-position: center center; background-repeat: no-repeat; background-size: cover;"
                      data-bg="/assets/work-letterboxd.jpg">
+                  </div>
+               </li>
+               <li class="mouse-pos-list-image-inner design visible">
+                  <div class="overlay overlay-image lazy"
+                     style="background-color: #e4d8c8; background-position: center center; background-repeat: no-repeat; background-size: cover;"
+                     data-bg="/assets/work-longsaw.jpg">
                   </div>
                </li>
                <li class="mouse-pos-list-image-inner development visible">
@@ -330,7 +336,7 @@
                      <div class="btn-click magnetic" data-strength="25" data-strength-text="15">
                         <div class="btn-fill"></div>
                         <span class="btn-text">
-                           <span class="btn-text-inner change">Apps<div class="count-nr">4</div></span>
+                           <span class="btn-text-inner change">Apps<div class="count-nr">5</div></span>
                         </span>
                      </div>
                   </div>
@@ -427,6 +433,23 @@
                         </div>
                      </a>
                   </li>
+                  <li class="design visible">
+                     <div class="stripe animate"></div>
+                     <a href="https://iagoestevez.com/longsaw/" class="row" target="_blank" rel="noopener noreferrer" data-barba-prevent>
+                        <div class="flex-col">
+                           <h4><span>Longsaw</span></h4>
+                        </div>
+                        <div class="flex-col animate">
+                           <p>Web</p>
+                        </div>
+                        <div class="flex-col animate">
+                           <p>TypeScript, React, Web Workers</p>
+                        </div>
+                        <div class="flex-col animate">
+                           <p>2026</p>
+                        </div>
+                     </a>
+                  </li>
                   <li class="development visible">
                      <div class="stripe animate"></div>
                      <a href="https://iagoesteevezz.github.io/arrow-puzzle-game/" class="row" target="_blank" rel="noopener noreferrer" data-barba-prevent>
@@ -506,11 +529,11 @@
                      <div class="single-tile-wrap">
                         <a href="https://money-track-one.vercel.app" class="row" target="_blank" rel="noopener noreferrer" data-barba-prevent>
                            <div class="flex-col">
-                              <div class="tile-image">
+                              <div class="tile-image" aria-hidden="true">
                                  <div class="overlay overlay-color" style="background-color: #e6dfd4;"></div>
                                  <div class="overlay overlay-image lazy"
                                     style="background-color: #e6dfd4; background-position: center center; background-repeat: no-repeat; background-size: cover;"
-                                    data-bg="/assets/work-moneytrack.jpg">
+                                    data-bg="/assets/work-moneytrack.jpg?v=2">
                                  </div>
                               </div>
                            </div>
@@ -531,7 +554,7 @@
                      <div class="single-tile-wrap">
                         <a href="https://github.com/iagoesteevezz/letterboxd-hours-extension" class="row" target="_blank" rel="noopener noreferrer" data-barba-prevent>
                            <div class="flex-col">
-                              <div class="tile-image">
+                              <div class="tile-image" aria-hidden="true">
                                  <div class="overlay overlay-color" style="background-color: #c9d4cc;"></div>
                                  <div class="overlay overlay-image lazy"
                                     style="background-color: #c9d4cc; background-position: center center; background-repeat: no-repeat; background-size: cover;"
@@ -552,11 +575,36 @@
                         </a>
                      </div>
                   </li>
+                  <li class="design visible">
+                     <div class="single-tile-wrap">
+                        <a href="https://iagoestevez.com/longsaw/" class="row" target="_blank" rel="noopener noreferrer" data-barba-prevent>
+                           <div class="flex-col">
+                              <div class="tile-image" aria-hidden="true">
+                                 <div class="overlay overlay-color" style="background-color: #e4d8c8;"></div>
+                                 <div class="overlay overlay-image lazy"
+                                    style="background-color: #e4d8c8; background-position: center center; background-repeat: no-repeat; background-size: cover;"
+                                    data-bg="/assets/work-longsaw.jpg">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="flex-col">
+                              <h4><span>Longsaw</span></h4>
+                              <div class="stripe"></div>
+                           </div>
+                           <div class="flex-col">
+                              <p>TypeScript, React, Web Workers</p>
+                           </div>
+                           <div class="flex-col">
+                              <p>2026</p>
+                           </div>
+                        </a>
+                     </div>
+                  </li>
                   <li class="development visible">
                      <div class="single-tile-wrap">
                         <a href="https://iagoesteevezz.github.io/arrow-puzzle-game/" class="row" target="_blank" rel="noopener noreferrer" data-barba-prevent>
                            <div class="flex-col">
-                              <div class="tile-image">
+                              <div class="tile-image" aria-hidden="true">
                                  <div class="overlay overlay-color" style="background-color: #2c2c2c;"></div>
                                  <div class="overlay overlay-image lazy"
                                     style="background-color: #2c2c2c; background-position: center center; background-repeat: no-repeat; background-size: cover;"
@@ -581,7 +629,7 @@
                      <div class="single-tile-wrap">
                         <a href="https://iagoesteevezz.github.io/chess-game/" class="row" target="_blank" rel="noopener noreferrer" data-barba-prevent>
                            <div class="flex-col">
-                              <div class="tile-image">
+                              <div class="tile-image" aria-hidden="true">
                                  <div class="overlay overlay-color" style="background-color: #d9cfc2;"></div>
                                  <div class="overlay overlay-image lazy"
                                     style="background-color: #d9cfc2; background-position: center center; background-repeat: no-repeat; background-size: cover;"
@@ -606,7 +654,7 @@
                      <div class="single-tile-wrap">
                         <a href="https://github.com/iagoesteevezz/LocalList" class="row" target="_blank" rel="noopener noreferrer" data-barba-prevent>
                            <div class="flex-col">
-                              <div class="tile-image">
+                              <div class="tile-image" aria-hidden="true">
                                  <div class="overlay overlay-color" style="background-color: #1f2428;"></div>
                                  <div class="overlay overlay-image lazy"
                                     style="background-color: #1f2428; background-position: center center; background-repeat: no-repeat; background-size: cover;"
@@ -631,7 +679,7 @@
                      <div class="single-tile-wrap">
                         <a href="https://github.com/iagoesteevezz/fueltracker-app" class="row" target="_blank" rel="noopener noreferrer" data-barba-prevent>
                            <div class="flex-col">
-                              <div class="tile-image">
+                              <div class="tile-image" aria-hidden="true">
                                  <div class="overlay overlay-color" style="background-color: #d5ded8;"></div>
                                  <div class="overlay overlay-image lazy"
                                     style="background-color: #d5ded8; background-position: center center; background-repeat: no-repeat; background-size: cover;"

@@ -2,12 +2,12 @@
    url() paths are relative to this file, which Vite serves from the site base. */
 
 .profile-picture {
-   background-image: url("assets/iago-entero.png");
+   background-image: url("assets/iago-entero.webp");
    background-size: 142%;
    background-position: 50% 2%;
 }
 
-/* Matches the flat backdrop of iago-entero.png so the photo edges disappear */
+/* Matches the flat backdrop of iago-entero.webp so the photo edges disappear */
 :root {
    --iago-photo-bg: #878c92;
 }
@@ -34,7 +34,7 @@
 }
 
 .single-about-image .overlay:nth-child(1) {
-   background-image: url("assets/iago-about.jpg");
+   background-image: url("assets/iago-about.webp");
    background-position: center center;
 }
 
