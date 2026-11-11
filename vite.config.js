@@ -49,7 +49,7 @@ function versionedPublicAssets() {
     transformIndexHtml: {
       order: 'post',
       handler(html) {
-        return html.replace(/(["'])\/(iago\.(?:css|js))\1/g, (_, q, file) => `${q}/${file}?v=${hash(file)}${q}`)
+        return html.replace(/(["'])\/(iago\.(?:css|js)|vendor\/[^"'?]+)\1/g, (_, q, file) => `${q}/${file}?v=${hash(file)}${q}`)
       },
     },
   }
